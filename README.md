@@ -1,4 +1,4 @@
-# RESCUE (2022 Fall)
+# Rescue (2022 Fall)
 
 COSE212-22F 강의의 학생들이 확장한 Rescue 언어(Rescue v2)입니다.
 기본 Rescue 언어(Rescue v1)는 [[여기]](https://github.com/kupl/rescue-lang)에서 확인할 수 있습니다.
@@ -29,7 +29,7 @@ S = raise UndefinedSemantics
 
 
 #### 예시
-1. `fact.ml`의 맨 마지막 `;` 지우기
+1. `fact.ml`의 중간의 `;;;`중 `;` 하나 지우기
 
 오류 코드
 ```ocaml
