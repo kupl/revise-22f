@@ -1,0 +1,16 @@
+{
+    "name": "rescue-22f",
+    "image": "sambyeol/ocaml-devcontainer",
+    "customizations": {
+        "vscode": {
+            "settings": {
+                "[ocaml][ocaml.interface][ocaml.menhir][ocaml.ocamllex]": {
+                    "editor.formatOnSave": true
+                }
+            },
+            "extensions": [
+                "ocamllabs.ocaml-platform"
+            ]
+        }
+    }
+}
