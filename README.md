@@ -15,7 +15,7 @@ C = ^ | v | < | >
   | origin
   | backspace
   | insert(S)
-N = non-negative integer (* i.e., 1, 2, ... *)
+N = positibe integer (* i.e., 1, 2, ... *)
 S = raise UndefinedSemantics
   | ;
 ```
