@@ -31,6 +31,8 @@ S = raise UndefinedSemantics
 
 #### 예시
 1. `fact.ml`의 맨 마지막 `;` 지우기
+
+오류 코드
 ```ocaml
 (* fact.ml *)
 let rec fact : int -> int
@@ -38,12 +40,24 @@ let rec fact : int -> int
 
 fact 10;;
 ```
+
+Rescue
 ```sh
 $ rescue -verbose -target examples/fact.ml "vv>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>backspace"
 ```
-![fact.ml](./svgs/fact.svg)
 
-2. `add.ml`
+수정된 코드
+```ocaml
+(* fact.ml *)
+let rec fact : int -> int
+= fun n -> if n > 1 then 1 else n * fact (n - 1);;
+
+fact 10;;
+```
+
+2. `add.ml`에 `;;` 삽입
+
+오류 코드
 ```ocaml
 (* add.ml *)
 let rec map : ('a -> 'b) -> 'a list -> 'b list
@@ -58,7 +72,24 @@ let add : int list -> int -> int list
 add [1; 2; 3] 1
 add [2; 4; 6] 2
 ```
+
+Rescue
 ```sh
 $ rescue -verbose -target examples/add.ml "vvvvvvvv >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> insert(;)insert(;) origin vvvvvvvvvv >>>>>>>>>>>>>>> insert(;)insert(;) origin vvvvvvvvvvv >>>>>>>>>>>>>>> insert(;)insert(;)"
 ```
-![add.ml](./svgs/add.svg)
+
+수정된 코드
+```ocaml
+(* add.ml *)
+let rec map : ('a -> 'b) -> 'a list -> 'b list
+= fun f l ->
+  match l with
+  | [] -> []
+  | hd::tl -> (f hd)::(map f tl)
+
+let add : int list -> int -> int list
+= fun l a -> map (fun e -> e + a) l;;
+
+add [1; 2; 3] 1;;
+add [2; 4; 6] 2;;
+```
