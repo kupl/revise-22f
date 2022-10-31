@@ -1,3 +1,10 @@
+%{
+  let rec repeat (cmd: Ast.Lang.Command.t) (n : int) : Ast.Lang.Command.t list =
+    if n > 0 then cmd::(repeat cmd (n - 1)) else []
+%}
+
+%token <int> NUM
+
 %token UP
 %token DOWN
 %token LEFT
@@ -24,7 +31,10 @@ parse:
 
 program:
   | { Ast.Lang.Program.empty () }
-  | pgm=program ; cmd=command { Ast.Lang.Program.add_command pgm cmd }
+  | pgm=program ; iter=iter { let cmd, n = iter in repeat cmd n |> Ast.Lang.Program.add_commands pgm }
+
+iter:
+  | cmd=command ; num=number { (cmd, num) }
 
 command:
   | UP { Ast.Lang.Command.up () }
@@ -36,5 +46,9 @@ command:
   | INSERT; LPAREN; str=string; RPAREN { Ast.Lang.Command.insert str }
 
 string:
-  UNDEFINEDSEMANTICS { Ast.Lang.PredefinedString.undefinedSemantics () }
+  | UNDEFINEDSEMANTICS { Ast.Lang.PredefinedString.undefinedSemantics () }
   | SEMICOLON { Ast.Lang.PredefinedString.semicolon () }
+
+number:
+  | { 1 }
+  | num=NUM { num }
