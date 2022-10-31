@@ -1,0 +1,9 @@
+(ocamllex lexer)
+
+(menhir
+ (modules generator))
+
+(library
+ (name parser)
+ (public_name rescue22f.parser)
+ (libraries rescue.ast))
