@@ -42,7 +42,7 @@ fact 10;;
 
 Rescue
 ```sh
-$ rescue -verbose -target examples/fact.ml "vv>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>backspace"
+rescue -verbose -target examples/fact.ml "vv>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>backspace"
 ```
 
 수정된 코드
@@ -74,7 +74,7 @@ add [2; 4; 6] 2
 
 Rescue
 ```sh
-$ rescue -verbose -target examples/add.ml "vvvvvvvv >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> insert(;)insert(;) origin vvvvvvvvvv >>>>>>>>>>>>>>> insert(;)insert(;) origin vvvvvvvvvvv >>>>>>>>>>>>>>> insert(;)insert(;)"
+rescue -verbose -target examples/add.ml "vvvvvvvv >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> insert(;)insert(;) origin vvvvvvvvvv >>>>>>>>>>>>>>> insert(;)insert(;) origin vvvvvvvvvvv >>>>>>>>>>>>>>> insert(;)insert(;)"
 ```
 
 수정된 코드
@@ -95,11 +95,13 @@ add [2; 4; 6] 2;;
 
 ## 사용법
 Rescue는 아래 두 프로그램을 이용하여 빌드합니다.
-* `opam`
-* `dune`
+* [`opam`](https://opam.ocaml.org/doc/Install.html)
+* [`dune`](https://dune.build/install)
 ```sh
-$ opam pin add --yes rescue https://github.com/kupl/rescue-lang.git
-$ dune build
-$ dune install
-$ rescue ...
+git clone https://github.com/kupl/rescue-22f.git
+cd rescue-22f
+opam pin add --yes rescue https://github.com/kupl/rescue-lang.git
+dune build
+dune install
+# your command: rescue ...
 ```
