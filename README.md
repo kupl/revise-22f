@@ -92,3 +92,14 @@ let add : int list -> int -> int list
 add [1; 2; 3] 1;;
 add [2; 4; 6] 2;;
 ```
+
+## 사용법
+Rescue는 아래 두 프로그램을 이용하여 빌드합니다.
+* `opam`
+* `dune`
+```sh
+$ opam pin add --yes rescue https://github.com/kupl/rescue-lang.git
+$ dune build
+$ dune install
+$ rescue ...
+```
