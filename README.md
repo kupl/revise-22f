@@ -7,23 +7,22 @@ COSE212-22F 강의의 학생들이 확장한 Rescue 언어(Rescue v2)입니다.
 
 #### 문법
 
-Rescue는 작은 수정을 정의한 언어로 명령의 리스트로 이루어져 있습니다.
+Rescue 프로그램 `P`는 작은 수정을 정의한 언어로 명령의 리스트로 이루어져 있습니다.
 ```
-P = C*
-C = M | M N
+P = I*
+I = C | C N
+C = ^ | v | < | >
   | origin
   | backspace
   | insert(S)
-M = ^ | v | < | >
-N = non-negative integer (* i.e., 0, 1, 2, ... *)
+N = non-negative integer (* i.e., 1, 2, ... *)
 S = raise UndefinedSemantics
   | ;
 ```
 
 #### 의미
-
-* `M`: `^`, `v`, `<`, `>`이 각각 상하좌우 방향으로 커서를 움직이는 것을 의미합니다.
-* `M N`: `M` 커맨드를 `N` 번 반복합니다.
+* `C N`: `C` 커맨드를 `N`번 반복합니다.
+* `^`, `v`, `<`, `>`: 각각 상하좌우 방향으로 커서를 움직이는 것을 의미합니다.
 * `origin`: 커서를 맨 위, 맨 왼쪽으로 이동시킵니다.
 * `backspace`: 커서 위치에서 한 글자 지웁니다.
 * `insert(S)`: 커서 위치에 `S`를 삽입합니다.
