@@ -8,7 +8,7 @@ let down = ['v' 'V']
 let backspace = ['b' 'B']['a' 'A']['c' 'C']['k' 'K']['s' 'S']['p' 'P']['a' 'A']['c' 'C']['e' 'E']
 let insert = ['i' 'I']['n' 'N']['s' 'S']['e' 'E']['r' 'R']['t' 'T']
 let origin = ['o' 'O']['r' 'R']['i' 'I']['g' 'G']['i' 'I']['n' 'N']
-let digit = ['1'-'9']['0'-'9']
+let digit = ['1'-'9']['0'-'9']*
 
 rule read =
     parse
