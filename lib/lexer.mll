@@ -23,7 +23,7 @@ rule read =
         | origin { ORIGIN }
         | backspace { BACKSPACE }
         | insert { INSERT }
-        | "raise UndefinedSemantics" { UNDEFINEDSEMANTICS }
-        | ";" { SEMICOLON }
+        | "raise UndefinedSemantics" { PREDEFINED "raise UndefinedSemantics" }
+        | ";" { PREDEFINED ";" }
         | eof { EOF }
         | _ { raise LexingError }

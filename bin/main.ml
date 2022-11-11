@@ -1,6 +1,7 @@
-module Program = Ast.Lang.Program
-module Source = Interpreter.Source
-
+module Source = Rescue.Source
+module Program = Rescue22f.Lang.Program
+module Parser = Rescue22f.Parser
+module Interpreter = Rescue22f.Interpreter
 let main () =
   (* Args *)
   let pgm = ref "" in
