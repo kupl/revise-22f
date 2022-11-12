@@ -1,6 +1,6 @@
 # Rescue (2022 Fall)
 
-COSE212-22F 강의의 학생들이 확장한 Rescue 언어(Rescue v2)입니다.
+COSE212-22F 강의의 학생들이 확장한 Rescue 언어(Rescue v3)입니다.
 기본 Rescue 언어(Rescue v1)는 [[여기]](https://github.com/kupl/rescue-lang)에서 확인할 수 있습니다.
 
 ## Rescue
