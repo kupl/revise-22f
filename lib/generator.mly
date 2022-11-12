@@ -10,9 +10,6 @@
 %token LEFT
 %token RIGHT
 
-%token LPAREN
-%token RPAREN
-
 %token ORIGIN
 %token BACKSPACE
 %token INSERT
@@ -42,7 +39,7 @@ command:
   | RIGHT { Lang.Command.right () }
   | ORIGIN { Lang.Command.origin () }
   | BACKSPACE { Lang.Command.backspace () }
-  | INSERT; LPAREN; str=PREDEFINED; RPAREN { Lang.PredefinedString.from_string str |> Lang.Command.insert }
+  | INSERT; str=PREDEFINED; { Lang.PredefinedString.from_string str |> Lang.Command.insert }
 
 number:
   | { 1 }

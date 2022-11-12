@@ -6,4 +6,4 @@
 (library
  (name rescue22f)
  (public_name rescue22f)
- (libraries rescue))
+ (libraries rescue str))

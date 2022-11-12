@@ -9,21 +9,25 @@ let backspace = ['b' 'B']['a' 'A']['c' 'C']['k' 'K']['s' 'S']['p' 'P']['a' 'A'][
 let insert = ['i' 'I']['n' 'N']['s' 'S']['e' 'E']['r' 'R']['t' 'T']
 let origin = ['o' 'O']['r' 'R']['i' 'I']['g' 'G']['i' 'I']['n' 'N']
 let digit = ['1'-'9']['0'-'9']*
+let allowed = ['a'-'z''A'-'Z''_''('')'' '';']
 
 rule read =
     parse
-        | whitespace { read lexbuf }
-        | digit { NUM (int_of_string (Lexing.lexeme lexbuf)) }
-        | "^" { UP }
-        | down { DOWN }
-        | "<" { LEFT }
-        | ">" { RIGHT }
-        | "(" { LPAREN }
-        | ")" { RPAREN }
-        | origin { ORIGIN }
-        | backspace { BACKSPACE }
-        | insert { INSERT }
-        | "raise UndefinedSemantics" { PREDEFINED "raise UndefinedSemantics" }
-        | ";" { PREDEFINED ";" }
-        | eof { EOF }
-        | _ { raise LexingError }
+    | whitespace { read lexbuf }
+    | digit { NUM (int_of_string (Lexing.lexeme lexbuf)) }
+    | "^" { UP }
+    | down { DOWN }
+    | "<" { LEFT }
+    | ">" { RIGHT }
+    | "(" { predefined (Buffer.create 20) lexbuf }
+    | origin { ORIGIN }
+    | backspace { BACKSPACE }
+    | insert { INSERT }
+    | eof { EOF }
+    | _ { raise LexingError }
+
+and predefined buf =
+    parse
+    | ")" { PREDEFINED (Buffer.contents buf) }
+    | allowed { Buffer.add_string buf (Lexing.lexeme lexbuf); predefined buf lexbuf }
+    | _ { raise LexingError }
