@@ -12,6 +12,8 @@ module PredefinedString = struct
     | LParen
     (* ) *)
     | RParen
+    (* raise TypeError *)
+    | RaiseTypeError
 
   let from_string (str : string) : t =
     let is_underscore_variable (var : string) : bool =
@@ -25,6 +27,7 @@ module PredefinedString = struct
     | " " -> Space
     | "(" -> LParen
     | ")" -> RParen
+    | "raise TypeError" -> RaiseTypeError
     | _ -> raise (Rescue.Lang.NotINPredefinedStringSet str)
 
   let get_string_value (value : t) : string =
@@ -35,6 +38,7 @@ module PredefinedString = struct
     | Space -> " "
     | LParen -> "("
     | RParen -> ")"
+    | RaiseTypeError -> "raise TypeError"
 
   let pp (formatter : Format.formatter) (str : t) : unit =
     get_string_value str |> Format.fprintf formatter "%s"
