@@ -22,6 +22,7 @@ S = raise UndefinedSemantics
   | " "       // 공백 문자로 큰 따옴표 없이 입력해야 합니다. e.g.) insert( )
   | (
   | )
+  | raise TypeError
 V = __ | _V   // 2개 이상의 _의 나열
 ```
 
