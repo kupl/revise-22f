@@ -1,7 +1,9 @@
 module Source = Rescue.Source
+module PredefinedString = Rescue22f.Lang.PredefinedString
 module Program = Rescue22f.Lang.Program
 module Parser = Rescue22f.Parser
 module Interpreter = Rescue22f.Interpreter
+
 let main () =
   (* Args *)
   let pgm = ref "" in
@@ -13,6 +15,7 @@ let main () =
       "-target", Arg.String (fun x -> opt_target := x), "Target to rescue";
       "-verbose", Arg.Set opt_verbose, "Show edit step by step";
       "-inplace", Arg.Set opt_inplace, "Inplace the update";
+      "-entry", Arg.String (fun x -> PredefinedString.entry_function := x), "Name of entry function";
     ]
   in
   let usage = "Usage: rescue [-verbose] [-inplace] -target <target.ml> RESCUE" in
