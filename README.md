@@ -23,7 +23,8 @@ S = raise UndefinedSemantics
   | (
   | \)        // insert의 )와 구분하기 위한 \가 필요합니다. 입력은 )만 입력됩니다. e.g.) insert(\))
   | raise TypeError
-  | __entry__ // 진입점 함수의 이름(e.g., min)이 삽입됩니다. 진입점 함수의 이름 또는 __entry__ 중 어느 것을 사용하여도 삽입되는 문자열은 같습니다.
+  | __entry__ // 진입점 함수의 이름(e.g., min)이 삽입됩니다.
+              // 진입점 함수의 이름 또는 __entry__ 중 어느 것을 사용하여도 삽입되는 문자열은 같습니다.
               // 예를 들어, 진입점 함수가 min일 경우 아래 두 insert는 모두 min을 삽입합니다:
               //   insert(__entry__)
               //   insert(min)
