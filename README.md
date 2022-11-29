@@ -1,7 +1,7 @@
 # Rescue (2022 Fall)
 
-COSE212-22F 강의의 학생들이 확장한 Rescue 언어(Rescue v4)입니다.
-기본 Rescue 언어(Rescue v1)는 [[여기]](https://github.com/kupl/rescue-lang)에서 확인할 수 있습니다.
+COSE212-22F 강의의 학생들이 확장한 Rescue 언어(Rescue v5)입니다.
+기본 Rescue 언어는 [[여기]](https://github.com/kupl/rescue-lang)에서 확인할 수 있습니다.
 
 ## Rescue
 
@@ -23,6 +23,10 @@ S = raise UndefinedSemantics
   | (
   | \)        // insert의 )와 구분하기 위한 \가 필요합니다. 입력은 )만 입력됩니다. e.g.) insert(\))
   | raise TypeError
+  | __entry__ // 진입점 함수의 이름(e.g., min)이 삽입됩니다. 진입점 함수의 이름 또는 __entry__ 중 어느 것을 사용하여도 삽입되는 문자열은 같습니다.
+              // 예를 들어, 진입점 함수가 min일 경우 아래 두 insert는 모두 min을 삽입합니다:
+              //   insert(__entry__)
+              //   insert(min)
 V = __ | _V   // 2개 이상의 _의 나열
 ```
 
@@ -97,6 +101,27 @@ let add : int list -> int -> int list
 
 add [1; 2; 3] 1;;
 add [2; 4; 6] 2;;
+```
+
+3. `diff.ml`의 진입점 함수 `diff`에 발생한 오타 수정
+
+오류 코드
+```ocaml
+(* diff.ml *)
+let dif : int -> int -> int
+= fun a b -> if a > b then a - b else b - a
+```
+
+Rescue
+```sh
+rescue -verbose -entry diff -target examples/diff.ml "v>7backspace3insert(diff)"
+```
+
+수정된 코드
+```ocaml
+(* diff.ml *)
+let diff : int -> int -> int
+= fun a b -> if a > b then a - b else b - a
 ```
 
 ## 사용법
