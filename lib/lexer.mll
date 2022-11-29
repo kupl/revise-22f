@@ -9,7 +9,7 @@ let backspace = ['b' 'B']['a' 'A']['c' 'C']['k' 'K']['s' 'S']['p' 'P']['a' 'A'][
 let insert = ['i' 'I']['n' 'N']['s' 'S']['e' 'E']['r' 'R']['t' 'T']
 let origin = ['o' 'O']['r' 'R']['i' 'I']['g' 'G']['i' 'I']['n' 'N']
 let digit = ['1'-'9']['0'-'9']*
-let allowed = ['a'-'z''A'-'Z''_''('')'' '';']
+let allowed = ['a'-'z''A'-'Z''_''('' '';']
 
 rule read =
     parse
@@ -29,5 +29,6 @@ rule read =
 and predefined buf =
     parse
     | ")" { PREDEFINED (Buffer.contents buf) }
+    | "\\)" { let str = Lexing.lexeme lexbuf in (String.length str - 1) |> String.sub str 1 |>  Buffer.add_string buf; predefined buf lexbuf }
     | allowed { Buffer.add_string buf (Lexing.lexeme lexbuf); predefined buf lexbuf }
     | _ { raise LexingError }
