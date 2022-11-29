@@ -12,6 +12,8 @@ module PredefinedString = struct
     | LParen
     (* ) *)
     | RParen
+    (* raise TypeError *)
+    | RaiseTypeError
     (* __entry__ *)
     | Entry
 
@@ -29,6 +31,7 @@ module PredefinedString = struct
     | " " -> Space
     | "(" -> LParen
     | ")" -> RParen
+    | "raise TypeError" -> RaiseTypeError
     | "__entry__" -> Entry
     | str when str = !entry_function -> Entry
     | _ -> raise (Rescue.Lang.NotInPredefinedStringSet str)
@@ -41,6 +44,7 @@ module PredefinedString = struct
     | Space -> " "
     | LParen -> "("
     | RParen -> ")"
+    | RaiseTypeError -> "raise TypeError"
     | Entry -> !entry_function
 
   let pp (formatter : Format.formatter) (str : t) : unit =
