@@ -2,6 +2,9 @@
 
 (name rescue22f)
 
+(maintainers "Seokhyun Lee <seokhyunlee@korea.ac.kr>")
+(authors "Seokhyun Lee <seokhyunlee@korea.ac.kr>")
+
 (generate_opam_files true)
 
 (source
