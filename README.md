@@ -1,7 +1,7 @@
 # Rescue (2022 Fall)
 
 COSE212-22F 강의의 학생들이 확장한 Rescue 언어(Rescue v5)입니다.
-기본 Rescue 언어는 [[여기]](https://github.com/kupl/rescue-lang)에서 확인할 수 있습니다.
+기본 Rescue 언어는 [[여기]](https://github.com/kupl/rescue-lang/tree/v1.0)에서 확인할 수 있습니다.
 
 ## Rescue
 
@@ -132,7 +132,7 @@ Rescue는 아래 두 프로그램을 이용하여 빌드합니다.
 ```sh
 git clone https://github.com/kupl/rescue-22f.git
 cd rescue-22f
-opam pin add --yes rescue https://github.com/kupl/rescue-lang.git
+opam pin add --yes rescue https://github.com/kupl/rescue-lang.git#v1.0
 dune build
 dune install
 # your command: rescue ...
