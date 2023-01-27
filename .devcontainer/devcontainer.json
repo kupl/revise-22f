@@ -1,6 +1,6 @@
 {
     "name": "rescue-22f",
-    "image": "sambyeol/ocaml-devcontainer",
+    "image": "sambyeol/ocaml-devcontainer:4.14",
     "customizations": {
         "vscode": {
             "settings": {
