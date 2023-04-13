@@ -34,7 +34,7 @@ module PredefinedString = struct
     | "raise TypeError" -> RaiseTypeError
     | "__entry__" -> Entry
     | str when str = !entry_function -> Entry
-    | _ -> raise (Rescue.Lang.NotInPredefinedStringSet str)
+    | _ -> raise (Revise.Lang.NotInPredefinedStringSet str)
 
   let get_string_value (value : t) : string =
     match value with
@@ -51,6 +51,6 @@ module PredefinedString = struct
     get_string_value str |> Format.fprintf formatter "%s"
 end
 
-module S = Rescue.Lang.Make (PredefinedString)
+module S = Revise.Lang.Make (PredefinedString)
 module Command = S.Command
 module Program = S.Program

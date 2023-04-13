@@ -1,4 +1,4 @@
 (executable
- (public_name rescue)
+ (public_name revise)
  (name main)
- (libraries rescue rescue22f rescue.util))
+ (libraries revise revise22f revise.util))

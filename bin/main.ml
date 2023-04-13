@@ -1,8 +1,8 @@
-module Source = Rescue.Source
-module PredefinedString = Rescue22f.Lang.PredefinedString
-module Program = Rescue22f.Lang.Program
-module Parser = Rescue22f.Parser
-module Interpreter = Rescue22f.Interpreter
+module Source = Revise.Source
+module PredefinedString = Revise22f.Lang.PredefinedString
+module Program = Revise22f.Lang.Program
+module Parser = Revise22f.Parser
+module Interpreter = Revise22f.Interpreter
 
 let main () =
   (* Args *)
@@ -12,20 +12,20 @@ let main () =
   let opt_inplace = ref false in
   let options =
     [
-      "-target", Arg.String (fun x -> opt_target := x), "Target to rescue";
+      "-target", Arg.String (fun x -> opt_target := x), "Target to revise";
       "-verbose", Arg.Set opt_verbose, "Show edit step by step";
       "-inplace", Arg.Set opt_inplace, "Inplace the update";
       "-entry", Arg.String (fun x -> PredefinedString.entry_function := x), "Name of entry function";
     ]
   in
-  let usage = "Usage: rescue [-verbose] [-inplace] -target <target.ml> RESCUE" in
+  let usage = "Usage: revise [-verbose] [-inplace] -target <target.ml> REVISE" in
   let _ = Arg.parse options (fun x -> pgm := x) usage in
   let _ =
     if (not (Sys.file_exists !opt_target)) && !opt_inplace then (
       print_endline "-target must be a file with -inplace option";
       exit 1)
   in
-  (* Rescue *)
+  (* Revise *)
   let pgm =
     (if Sys.file_exists !pgm then Util.File.read_file_from_path !pgm else !pgm) |> Parser.parse
   in

@@ -4,6 +4,6 @@
  (modules generator))
 
 (library
- (name rescue22f)
- (public_name rescue22f)
- (libraries rescue str))
+ (name revise22f)
+ (public_name revise22f)
+ (libraries revise str))
